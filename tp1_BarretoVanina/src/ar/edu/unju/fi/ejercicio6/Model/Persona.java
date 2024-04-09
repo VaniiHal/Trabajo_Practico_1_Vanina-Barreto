@@ -30,7 +30,9 @@ public class Persona {
 	
 	@Override
 	public String toString() {
-		return "DNI: " + dni + ", nombre: " + nombre + ", fecha de nacimiento: " + fechaNac + ", provincia:" + provincia;
+		int edad = calcularEdad(fechaNac);
+		boolean mayor= verificarMayoria(edad);
+		return "\n" + "Nombre: " + nombre + "\n" + "DNI: " + dni + "\n" + "Fecha de nacimiento: " + fechaNac + "\n" + "Edad: " + edad + "\n" + "Provincia: " + provincia + "\n" + (mayor == true ? "La persona es mayor de edad": "La persona no es mayor de edad") + "\n";
 	}
 
 
@@ -57,19 +59,6 @@ public class Persona {
 	}
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
-	}
-
-	public void mostrarDatos(LocalDate fechaNac) {
-		int edad = calcularEdad(fechaNac);
-		System.out.println("Edad: " +  edad);
-		boolean mayor = verificarMayoria(edad);
-		if (mayor == true) {
-			System.out.println("La persona es mayor de edad");
-		}
-		else {
-			System.out.println("La persona no es mayor de edad");
-		}
-		System.out.println("-------------------------------------------");
 	}
 
 	public int calcularEdad(LocalDate fechaNac) {

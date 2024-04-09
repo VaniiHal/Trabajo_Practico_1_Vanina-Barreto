@@ -18,30 +18,27 @@ public class Main {
 	}
 
 	private static void cargarDatos3(Scanner entrada) {
+		System.out.println("Ingrese nombre: ");
+		String nombre = entrada.nextLine();
+		
 		System.out.println("Ingrese dni:");
 		long dni = entrada.nextLong();
-		entrada.nextLine();
-		
-		System.out.println("Ingrese nombre: ");
-		String nombre = entrada.next();
-		entrada.nextLine();
 		
 		LocalDate fechaNac = ingresarFecha(entrada);
 		
 		Persona persona = new Persona(dni, nombre, fechaNac);
 		System.out.println(persona);
-		persona.mostrarDatos(fechaNac);
+		//persona.mostrarDatos(fechaNac);
 		
 	}
 
 	private static void cargarDatos2(Scanner entrada) {
+		entrada.nextLine();
+		System.out.println("Ingrese nombre: ");
+		String nombre = entrada.nextLine();
+		
 		System.out.println("Ingrese dni:");
 		long dni = entrada.nextLong();
-		entrada.nextLine();
-		
-		System.out.println("Ingrese nombre: ");
-		String nombre = entrada.next();
-		entrada.nextLine();
 		
 		LocalDate fechaNac = ingresarFecha(entrada);
 		
@@ -51,18 +48,17 @@ public class Main {
 		
 		Persona persona = new Persona(dni, nombre, fechaNac, provincia);
 		System.out.println(persona);
-		persona.mostrarDatos(fechaNac);
+		//persona.mostrarDatos(fechaNac);
 		
 	}
 
 	private static void cargarDatos(Persona persona, Scanner entrada) {
+		System.out.println("Ingrese nombre: ");
+		String nombre = entrada.nextLine();
+		
 		System.out.println("Ingrese dni:");
 		long dni = entrada.nextLong();
-		entrada.nextLine();
 		
-		System.out.println("Ingrese nombre: ");
-		String nombre = entrada.next();
-		entrada.nextLine();
 		
 		LocalDate fechaNac = ingresarFecha(entrada);
 		
@@ -75,7 +71,7 @@ public class Main {
 		persona.setProvincia(provincia);
 		//persona.toString(); //POR ALGUNA RAZON EL TO STRING NO ME FUNCIONA BIEN
 		System.out.println(persona); 
-		persona.mostrarDatos(fechaNac);		
+		//persona.mostrarDatos(fechaNac);		
 	}
 
 	
