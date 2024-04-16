@@ -7,7 +7,6 @@ public class Main {
 		for (j=2; j<=41; j++) {
 			System.out.print((j*k) + "  ");
 			k--;
-			
 		}
 	}
 
