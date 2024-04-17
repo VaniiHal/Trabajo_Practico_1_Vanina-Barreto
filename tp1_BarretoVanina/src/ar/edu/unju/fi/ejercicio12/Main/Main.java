@@ -15,10 +15,10 @@ public class Main {
 		System.out.print("Ingrese nombre: ");
 		String nombre = entrada.nextLine();
 		while (fechaNac == null) {
-			System.out.print("Ingrese fecha de Nacimiento (Formato dd-mm-yyyy): ");
+			System.out.print("Ingrese fecha de Nacimiento (Formato dd/mm/yyyy): ");
 			String fecha = entrada.nextLine();
 			try {
-				DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				DateTimeFormatter formato= DateTimeFormatter.ofPattern("dd/MM/yyyy"); //como se hace en el caso de que la fecha sea ilogica? 30 de febrero 
 				fechaNac = LocalDate.parse(fecha,formato);
 			}catch(DateTimeParseException e) {
 				System.out.println("\nError en el ingreso de la fecha de nacimeinto. Intentalo de nuevo\n");
