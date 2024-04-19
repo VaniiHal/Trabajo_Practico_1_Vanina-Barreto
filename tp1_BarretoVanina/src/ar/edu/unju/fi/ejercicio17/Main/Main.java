@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import ar.edu.unju.fi.ejercicio17.Model.Jugador;
@@ -15,7 +16,7 @@ public class Main {
 		Scanner entrada = new Scanner(System.in);
 		List<Jugador> jugadores = new ArrayList<>(); 
 		do {
-			System.out.println("\n\tMENU DE OPCIONES");
+			System.out.println("\n\t***MENU DE OPCIONES***");
 			System.out.println("0- Alta de 5 jugadores automatica"); //agilizar la prueba
 			System.out.println("1- Alta de jugador");
 			System.out.println("2- Mostrar datos del jugador");
@@ -34,15 +35,74 @@ public class Main {
 			case 2: buscarJugador(jugadores,entrada); break;
 			case 3: mostrarJugadores(jugadores); break;
 			case 4: modificarJugador(jugadores,entrada); break;
-			case 5:
-			case 6: System.out.println("\nLa cantidad total de jugares es: " + jugadores.size() + "\n"); break;
-			case 7:
-			case 8:
-			default: System.out.println("\tADIOS *-*");
+			case 5: eliminarJugador(jugadores,entrada); break;
+			case 6: mostrarCantidad(jugadores); break;
+			case 7: mostrarNacionalidad(jugadores,entrada); break;
+			case 8: System.out.println("\tADIOS *-*"); break;
+			default: System.out.println("Opcion invalida");
 			}
 		} while(opcion != 8);
 		
 		entrada.close();
+	}
+
+	private static void mostrarNacionalidad(List<Jugador> jugadores, Scanner entrada) {
+		System.out.println("\n\t*** MOSTRAR CANTIDAD DE JUGADORES POR NACION ***");
+		System.out.print("\nIngrese nacionalidad: ");
+		String nacion = entrada.nextLine();
+		int cont=0;
+		for (Jugador j : jugadores) {
+			if(j.getNacionalidad().equalsIgnoreCase(nacion)) {
+				cont=cont+1;
+			}
+		}
+		if(cont==0) {
+			System.out.println("No se han encontrado jugadores para la nacionalidad " + nacion);
+		}
+		else {
+			System.out.println("Hay " + cont + " jugadores con nacionalidad " + nacion);
+		}
+	}
+
+	private static void mostrarCantidad(List<Jugador> jugadores) {
+		System.out.println("\n\t*** CANTIDAD DE JUGADORES ***");
+		int cantidad=jugadores.size();
+		if (cantidad!=0) {
+			System.out.println("\nLa cantidad total de jugadorres es: " + cantidad + "\n");
+		}
+		else {
+			System.out.println("\nNo hay jugadores cargados");
+		}
+		
+	}
+
+	private static void eliminarJugador(List<Jugador> jugadores, Scanner entrada) {
+		boolean encontrado=false;
+		System.out.println("\n\t*** ELIMINACION DE JUGADOR ***");
+		if (jugadores.size()!=0) {
+			System.out.print("\nIngrese nombre del jugador: ");
+			String nombre=entrada.nextLine();
+			System.out.print("Ingrese apellido del jugador: ");
+			String apellido=entrada.nextLine();
+			Iterator <Jugador> k = jugadores.iterator();
+			while (k.hasNext()) {
+				Jugador jugador = k.next();
+				if (jugador.getApellido().equalsIgnoreCase(apellido) && jugador.getNombre().equalsIgnoreCase(nombre)) {
+					k.remove();
+					encontrado=true;
+					System.out.println("Jugador eliminado");
+					System.out.print("\n");
+					//mostrarJugadores(jugadores);
+				}
+			}
+			if (encontrado==false) {
+				System.out.println("El jugador no se encuentra en la lista");
+			}
+		}
+		else {
+			System.out.println("\nNo hay jugadores cargados");
+		}
+		
 	}
 
 	private static void modificarJugador(List<Jugador> jugadores, Scanner entrada) {
@@ -69,7 +129,7 @@ public class Main {
 	private static void modificarDatos(Jugador jugador, Scanner entrada) {
 		int opc=0;
 		do {
-			System.out.println("Que dato desea modificar?");
+			System.out.println("\n\tQue dato desea modificar?");
 			System.out.println("1) Nombre");
 			System.out.println("2) Apellido");
 			System.out.println("3) Fecha de nacimiento");
@@ -111,10 +171,10 @@ public class Main {
 			case 8: System.out.println("\tADIOS *-*"); break;
 			default: System.out.println("Opcion invalida");
 			}
-		}while(opc!=7);
+		}while(opc!=8);
 		
 	}
-
+	//APLICAR ORDENADA
 	private static void mostrarJugadores(List<Jugador> jugadores) {
 		for(int k=0; k<jugadores.size(); k++) {
 			System.out.println(jugadores.get(k));
@@ -142,7 +202,8 @@ public class Main {
 	}
 
 	private static void cargarJugador(List<Jugador> jugadores, Scanner entrada) {
-		System.out.print("Ingrese nombre del jugador: ");
+		System.out.println("\n\t*** ALTA DE JUGADOR ***");
+		System.out.print("\nIngrese nombre del jugador: ");
 		String nombre=entrada.nextLine();
 		
 		System.out.print("Ingrese apellido del jugador: ");
@@ -204,16 +265,17 @@ public class Main {
 	}
 	
 	private static void cargarAutomatica(List<Jugador> jugadores) {
-		Jugador jugador1 = new Jugador("Jimin", "Hemsworth", LocalDate.of(1995, 10, 10), "Coreano", 1.74, 61, "MEDIO");
+		Jugador jugador1 = new Jugador("Chris", "Hemsworth", LocalDate.of(1995, 10, 10), "Estadounidense", 1.74, 61, "MEDIO");
 		Jugador jugador2 = new Jugador("Martin", "Palermo", LocalDate.of(1995, 12, 30), "Argentino", 1.77, 62, "DEFENSA");
 		Jugador jugador3 = new Jugador("Angel", "DiMaria", LocalDate.of(1997, 9, 1), "Argentino", 1.77, 62, "DELANTERO");
 		Jugador jugador4 = new Jugador("Emilio", "Martinez", LocalDate.of(1993, 3, 9), "Argentino", 1.81, 67, "ARQUERO");
-		Jugador jugador5 = new Jugador("Cris", "Rodriguez", LocalDate.of(1994,9, 12), "Coreano", 1.74, 59, "ARQUERO");
+		Jugador jugador5 = new Jugador("Brad", "Pitt", LocalDate.of(1994,9, 12), "Estadounidense", 1.74, 59, "ARQUERO");
 		jugadores.add(jugador1);
 		jugadores.add(jugador2);
 		jugadores.add(jugador3);
 		jugadores.add(jugador4);
 		jugadores.add(jugador5);
+		System.out.println("Jugadores cargados");
 	}
 
 }

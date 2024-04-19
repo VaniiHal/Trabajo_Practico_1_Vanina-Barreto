@@ -21,7 +21,6 @@ public class Jugador {
 	
 	public Jugador(String nombre, String apellido, LocalDate fechaNac, String nacionalidad, double estatura,
 			double peso, String posicion) {
-		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.fechaNac = fechaNac;
