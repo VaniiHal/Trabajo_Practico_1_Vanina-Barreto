@@ -16,7 +16,7 @@ public class Pais {
 	
 	@Override
 	public String toString() {
-		return " Codigo: " + codigo + "\nNombre=" + nombre;
+		return "Pais:" + nombre + "\tCodigo: " + codigo;
 	}
 	
 	public int getCodigo() {

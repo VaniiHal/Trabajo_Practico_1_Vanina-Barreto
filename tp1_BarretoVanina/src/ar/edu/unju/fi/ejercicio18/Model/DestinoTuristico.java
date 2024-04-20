@@ -16,8 +16,7 @@ public class DestinoTuristico {
 	}
 	@Override
 	public String toString() {
-		return "Codigo de destino: " + codigo + "\tNombre: " + nombre + "\nPrecio:" + precio + "\nPais: " + pais
-				+ "\nCantidad de dias: " + cantDias;
+		return "Codigo de destino: " + codigo + "\tNombre: " + nombre + "\tPrecio: " + precio + "\t" + pais + "\tCantidad de dias: " + cantDias;
 	}
 	public int getCodigo() {
 		return codigo;
