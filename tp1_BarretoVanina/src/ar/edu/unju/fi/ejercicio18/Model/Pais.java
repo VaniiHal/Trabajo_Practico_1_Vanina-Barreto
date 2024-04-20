@@ -3,7 +3,11 @@ package ar.edu.unju.fi.ejercicio18.Model;
 public class Pais {
 	private int codigo;
 	private String nombre;
-		
+	
+	public Pais() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Pais(int codigo, String nombre) {
 		super();
 		this.codigo = codigo;
@@ -12,7 +16,7 @@ public class Pais {
 	
 	@Override
 	public String toString() {
-		return "Pais [codigo=" + codigo + ", nombre=" + nombre + "]";
+		return " Codigo: " + codigo + "\nNombre=" + nombre;
 	}
 	
 	public int getCodigo() {
